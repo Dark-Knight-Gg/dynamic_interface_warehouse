@@ -15,9 +15,9 @@ class BaseNavigateActionWidget extends StatelessWidget {
 
   final IconData? icon;
   final String? label;
-  final double labelSize;
-  final Color labelColor;
-  final FontWeight labelFontWeight;
+  final double? labelSize;
+  final Color? labelColor;
+  final FontWeight? labelFontWeight;
   final String pageRoute;
 
   @override
@@ -37,7 +37,12 @@ class BaseNavigateActionWidget extends StatelessWidget {
               borderRadius: BorderRadius.circular(8),
             ),
             padding: const EdgeInsets.all(8),
-            child: icon != null
+            child:SvgPicture.asset(
+              'assets/images/ic_default.svg',
+/*              package: 'dynamic_interface_warehouse',*/
+              height: 24,
+              width: 24,
+              fit: BoxFit.fill,/*icon != null
                 ? Icon(
                     icon,
                     size: 24,
@@ -45,10 +50,12 @@ class BaseNavigateActionWidget extends StatelessWidget {
                   )
                 : SvgPicture.asset(
                     'assets/images/ic_default.svg',
+                    package: 'dynamic_interface_warehouse',
                     height: 24,
                     width: 24,
                     fit: BoxFit.fill,
-                  ),
+                  ),*/
+            ),
           ),
           if (label != null) ...[
             const SizedBox(width: 16),

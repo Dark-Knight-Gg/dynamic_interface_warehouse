@@ -1,5 +1,4 @@
 import 'package:dynamic_interface_warehouse/widget/page_builder.dart';
-import 'package:dynamic_interface_warehouse/widget/text_field_widget.dart';
 import 'package:flutter/material.dart';
 
 class DefaultPage extends StatefulWidget {
@@ -15,71 +14,41 @@ class _DefaultPage extends State<DefaultPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          Container(
-            alignment: Alignment.center,
-            child: const Text(
-              'Default Page',
-              style: TextStyle(
-                color: Colors.red,
-                fontSize: 30,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ),
-          buildPageGenerate(),
-        ],
-      ),
-    );
+    return buildPageGenerate();
   }
 
-  PreferredSizeWidget buildAppBar(BuildContext context) {
-    return AppBar(
-      automaticallyImplyLeading: false,
-      bottom: PreferredSize(
-        preferredSize: const Size(0.0, 0.0),
-        child: Padding(
-          padding: EdgeInsets.zero,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              SizedBox(
-                width: 100,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        Navigator.of(context).pop();
-                      },
-                      child: Icon(
-                        Icons.arrow_back,
-                        size: 16,
-                        color: ColorApp.brand,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              // const Spacer(),
-              const Flexible(
-                  child: Text('Page1',
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(color: Colors.black, fontSize: 16))),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
 
   Widget buildPageGenerate() {
-    return PageBuilder(
-      formdata: data,
-      mapAnswers: mapAnswers,
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        buildForm(),
+        buildMenu(),
+      ],
+    );
+  }
+
+  Widget buildForm() {
+    return Container(
+      width: 350,
+      padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
+      decoration: BoxDecoration(
+        color: const Color(0xffF0F6FF),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: PageBuilder(formdata: formData, mapAnswers: mapAnswers),
+    );
+  }
+
+  Widget buildMenu() {
+    return Container(
+      width: 350,
+      padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
+      decoration: BoxDecoration(
+        color: const Color(0xffF0F6FF),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: PageBuilder(formdata: menuData, mapAnswers: mapAnswers),
     );
   }
 
@@ -87,7 +56,208 @@ class _DefaultPage extends State<DefaultPage> {
     "username": "",
     "password": "",
   };
-
+  final menuData = {
+    "display": "form",
+    "components": [
+      {
+        "label": "Columns",
+        "columns": [
+          {
+            "components": [
+              {
+                "icon": null,
+                "labelColor": null,
+                "labelSize": null,
+                "labelFontWeight": null,
+                "label": "Page 1",
+                "key": "navigate",
+                "type": "navigate",
+                "pageRoute": "/Page1",
+              },
+              {
+                "icon": null,
+                "labelColor": null,
+                "labelSize": null,
+                "labelFontWeight": null,
+                "label": "Page 2",
+                "key": "navigate",
+                "type": "navigate",
+                "pageRoute": "/Page2",
+              },
+              {
+                "icon": null,
+                "labelColor": null,
+                "labelSize": null,
+                "labelFontWeight": null,
+                "label": "Page 3",
+                "key": "navigate",
+                "type": "navigate",
+                "pageRoute": "/Page3",
+              }
+            ],
+            "width": 6,
+            "offset": 0,
+            "push": 0,
+            "pull": 0,
+            "size": "md",
+            "currentWidth": 6
+          }
+        ],
+        "key": "columns",
+        "type": "columns",
+        "input": false,
+        "tableView": false
+      }
+    ]
+  };
+  final formData = {
+    "display": "form",
+    "components": [
+      {
+        "label": "Columns",
+        "columns": [
+          {
+            "components": [
+              {
+                "label": "Text Field",
+                "applyMaskOn": "change",
+                "tableView": true,
+                "validateWhenHidden": false,
+                "key": "username",
+                "type": "username",
+                "input": true,
+                "hintTextFiled": "userName",
+              },
+            ],
+            "width": 6,
+            "offset": 0,
+            "push": 0,
+            "pull": 0,
+            "size": "md",
+            "currentWidth": 6
+          },
+          {
+            "components": [
+              {
+                "label": "Text Field",
+                "applyMaskOn": "change",
+                "tableView": true,
+                "validateWhenHidden": false,
+                "key": "password",
+                "type": "password",
+                "input": true,
+                "hintTextFiled": "password",
+              }
+            ],
+            "width": 6,
+            "offset": 0,
+            "push": 0,
+            "pull": 0,
+            "size": "md",
+            "currentWidth": 6
+          },
+        ],
+        "key": "columns",
+        "type": "columns",
+        "input": false,
+        "tableView": false
+      }
+    ]
+  };
+  final dataDemo = {
+    "display": "form",
+    "components": [
+      {
+        "label": "Columns",
+        "columns": [
+          {
+            "components": [
+              {
+                "label": "Text Field",
+                "applyMaskOn": "change",
+                "tableView": true,
+                "validateWhenHidden": false,
+                "key": "username",
+                "type": "username",
+                "input": true,
+                "hintTextFiled": "userName",
+              },
+            ],
+            "width": 6,
+            "offset": 0,
+            "push": 0,
+            "pull": 0,
+            "size": "md",
+            "currentWidth": 6
+          },
+          {
+            "components": [
+              {
+                "label": "Text Field",
+                "applyMaskOn": "change",
+                "tableView": true,
+                "validateWhenHidden": false,
+                "key": "password",
+                "type": "password",
+                "input": true,
+                "hintTextFiled": "password",
+              }
+            ],
+            "width": 6,
+            "offset": 0,
+            "push": 0,
+            "pull": 0,
+            "size": "md",
+            "currentWidth": 6
+          },
+          {
+            "components": [
+              {
+                "icon": null,
+                "labelColor": null,
+                "labelSize": null,
+                "labelFontWeight": null,
+                "label": "Page 1",
+                "key": "navigate",
+                "type": "navigate",
+                "pageRoute": "/Page1",
+              },
+              {
+                "icon": null,
+                "labelColor": null,
+                "labelSize": null,
+                "labelFontWeight": null,
+                "label": "Page 2",
+                "key": "navigate",
+                "type": "navigate",
+                "pageRoute": "/Page2",
+              },
+              {
+                "icon": null,
+                "labelColor": null,
+                "labelSize": null,
+                "labelFontWeight": null,
+                "label": "Page 3",
+                "key": "navigate",
+                "type": "navigate",
+                "pageRoute": "/Page3",
+              }
+            ],
+            "width": 6,
+            "offset": 0,
+            "push": 0,
+            "pull": 0,
+            "size": "md",
+            "currentWidth": 6
+          }
+        ],
+        "key": "columns",
+        "type": "columns",
+        "input": false,
+        "tableView": false
+      }
+    ]
+  };
   final data = {
     "label": "Table",
     "cellAlignment": "left",
@@ -120,7 +290,7 @@ class _DefaultPage extends State<DefaultPage> {
           ]
         }
       ],
-      [
+/*      [
         {
           "components": [
             {
@@ -159,7 +329,7 @@ class _DefaultPage extends State<DefaultPage> {
             }
           ]
         }
-      ]
+      ]*/
     ],
     "numCols": 1,
     "numRows": 2

@@ -3,9 +3,11 @@ import 'package:dynamic_interface_warehouse/screen/error.dart';
 import 'package:dynamic_interface_warehouse/screen/page1.dart';
 import 'package:dynamic_interface_warehouse/screen/page2.dart';
 import 'package:dynamic_interface_warehouse/screen/page3.dart';
+import 'package:dynamic_interface_warehouse/screen/page_demo.dart';
 import 'package:flutter/material.dart';
 
 class Routes {
+  static const String demoPage = "/Demo";
   static const String defaultPage = "/";
   static const String page1 = "/Page1";
   static const String page2 = "/Page2";
@@ -23,6 +25,10 @@ class RouteGenerator {
         args = routeSettings.arguments as Map;
       }
       switch (routeSettings.name) {
+        case Routes.demoPage:
+          return MaterialPageRoute(
+            builder: (_) => const DemoPage(),
+          );
         case Routes.defaultPage:
           return MaterialPageRoute(
             builder: (_) => const DefaultPage(),
